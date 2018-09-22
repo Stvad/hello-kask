@@ -5,6 +5,7 @@ plugins {
     java
     kotlin("jvm") version "1.2.70"
     id("org.stvad.kask") version "0.1.3"
+    id("org.gretty") version "2.2.0"
 
     war
 }
@@ -15,6 +16,7 @@ version = "0.1.0"
 repositories {
     mavenCentral()
     maven(url = "https://jitpack.io")
+    jcenter()
 }
 
 dependencies {
@@ -32,4 +34,19 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Kask> {
     packageName = "org.stvad.kask.example.model"
     modelPath.set(layout.projectDirectory.dir("models").file("en-US.json"))
+}
+
+val buildLambdaArchive by tasks.creating(Zip::class) {
+    val compileKotlin: KotlinCompile by tasks
+    from(compileKotlin)
+
+    val compileJava: JavaCompile by tasks
+    from(compileJava)
+
+    val processResources: ProcessResources by tasks
+    from(processResources)
+
+    into("lib") {
+        from(configurations.runtimeClasspath)
+    }
 }

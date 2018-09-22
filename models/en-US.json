@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "hello world",
+      "invocationName": "greeter",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",

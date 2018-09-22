@@ -32,6 +32,7 @@ val helloKaskSkill = Skills.standard().addRequestHandlers(
         respond(LaunchRequest::class) {
             val welcomeSpeech = "Hey there!"
             withSpeech(welcomeSpeech)
+            withReprompt(welcomeSpeech)
             withSimpleCard("Hello Kask", welcomeSpeech)
         },
         respond("AMAZON.CancelIntent") { withSpeech("OK!") },

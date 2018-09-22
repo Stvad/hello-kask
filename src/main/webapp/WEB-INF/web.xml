@@ -11,7 +11,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>hellokask</servlet-name>
-        <url-pattern>/main</url-pattern>
+        <url-pattern>/skill</url-pattern>
     </servlet-mapping>
 
 </web-app>
