@@ -1,6 +1,9 @@
 # Kask example skill
 An example Alexa skill project that is using [Kask](https://github.com/Stvad/kask) library.
 
+Kask is designed to improve developer experience for Alexa skills on JVM.   
+This example demonstrates it's usage in Kotlin and Java.
+This example can run both on AWS Lambda and as a JVM servlet (so you can run it locally or on your own server).
 
 ## Run it
 
