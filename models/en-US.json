@@ -1,0 +1,75 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "hello world",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "say hello",
+            "say hello world",
+            "hello",
+            "say hi",
+            "say hi world",
+            "hi",
+            "how are you"
+          ]
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "RepeatNumberIntent",
+          "slots": [
+            {
+              "name": "numberSlot",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "repeat {numberSlot}"
+          ]
+        },
+        {
+          "name": "RepeatDurationIntent",
+          "slots": [
+            {
+              "name": "durationSlot",
+              "type": "AMAZON.DURATION"
+            }
+          ],
+          "samples": [
+            "repeat {durationSlot}"
+          ]
+        },
+        {
+          "name": "RepeatAnimalIntent",
+          "slots": [
+            {
+              "name": "animalNameSlot",
+              "type": "AMAZON.Animal"
+            }
+          ],
+          "samples": [
+            "repeat {animalNameSlot}"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}
