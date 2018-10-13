@@ -4,7 +4,7 @@ import org.stvad.kask.gradle.Kask
 plugins {
     java
     kotlin("jvm") version "1.2.70"
-    id("org.stvad.kask") version "0.1.3"
+    id("org.stvad.kask") version "0.1.4"
     id("org.gretty") version "2.2.0"
 
     war
