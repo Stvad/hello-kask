@@ -22,6 +22,8 @@ repositories {
 dependencies {
     compile(kotlin("stdlib-jdk8"))
     compile("javax.servlet", "javax.servlet-api", "3.0.1") // Required only by "Servlet" version of the skill
+    implementation("org.apache.logging.log4j:log4j-api:2.9.0") { isForce = true }
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.9.0") { isForce = true }
 }
 
 configure<JavaPluginConvention> {
