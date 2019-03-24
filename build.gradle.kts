@@ -3,7 +3,7 @@ import org.stvad.kask.gradle.Kask
 
 plugins {
     java
-    kotlin("jvm") version "1.2.70"
+    kotlin("jvm") version "1.3.21"
     id("org.stvad.kask") version "0.1.5"
     id("org.gretty") version "2.2.0"
 
@@ -51,4 +51,9 @@ val buildLambdaArchive by tasks.creating(Zip::class) {
     into("lib") {
         from(configurations.runtimeClasspath)
     }
+}
+
+gretty {
+    // Setting this argument is useful for testing purposes with e.g. bespoken cli: https://read.bespoken.io/cli/commands/
+//     jvmArgs = listOf("-Dcom.amazon.ask.servlet.disableRequestSignatureCheck=true")
 }
