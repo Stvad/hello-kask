@@ -8,12 +8,25 @@ This example can run both on AWS Lambda and as a JVM servlet (so you can run it 
 ## Run it
 
 1. Clone this repository.
-2. `cd` to the code location
-3. Run `./gradlew appRun`. 
+1. `cd` to the code location
+1. Run `./gradlew appRun`. 
 
     Alternatively, you can open and run the project from within your favorite IDE.
 
 At this point, you have a fully functional Alexa skill running at [http://localhost:8080/hello-kask/skill](http://localhost:8080/hello-kask/skill).
+
+### Test it using bespoken cli
+
+1. [Install bespoken cli](https://www.npmjs.com/package/bespoken-tools)
+1. Make your skill accessible via public https endpoint: `bst proxy http 8080`  
+   This command will give you a publicly accessible url in a form of `https://<unique-id>.bespoken.link/`, where unique id would be specific for you. It will redirect all requests to `http://localhost:8080/`.
+1. Now you can test your skill by running commands like these (from within the project directory):  
+    * `bst launch -u https://<unique-id>.bespoken.link/hello-kask/skill` - to send `LaunchRequest` to your skill;
+    * `bst intend RepeatDurationIntent durationSlot=PT10S -u https://<unique-id>.bespoken.link/hello-kask/skill` - send a request with the `RepeatDurationIntent` intent, providing the `durationSlot` slot value to your skill; 
+    * `bst utter "repeat PT10S" -u https://<unique-id>.bespoken.link/hello-kask/skill` - send an utterance to your skill resulting in the same invocation to your skill as in previous command.
+    
+
+    **See more at**: https://read.bespoken.io/cli/commands/
 
 ### Make Alexa talk to it
 
@@ -21,11 +34,7 @@ To actually make Alexa talk to your skill you need to [create a skill in Alexa s
 Afterward, you can either run skill on AWS Lambda as the link above suggest (to create a Lambda package - run `./gradlew buildLambdaArchive`). Or make Alexa talk directly to the skill running on your computer.  
 If you'd like to go with the second option - you need to follow the skill creation guide in all points but one. When it's time to `set up endpoint`:
 1. Select `HTTPS` instead of `AWS Lambda`
-1. Make your skill accessible via public https endpoint. Some options on how to do it:
-    * [bst proxy](http://docs.bespoken.io/en/latest/commands/proxy/): `bst proxy http 8080`
-    * [ngrok](https://ngrok.com/): `ngrok http 8080`  
-    
-    Both commands will provide you with the publicly accessible endpoint that would redirect all requests to `http://localhost:8080/`.  
+1. Make your skill accessible via public https endpoint, as described in a section above.
 1. For endpoint URI enter: `<URL you've obtained in the previous step>/hello-kask/skill`. 
 1. For "Select SSL certificate type" select `My development endpoint is a sub-domain of a domain that has a wildcard certificate from a certificate authority` option.
 
